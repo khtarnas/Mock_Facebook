@@ -454,7 +454,12 @@ var getMatchingUsers = function(req, res) {
 			
 		// if there is data
     	} else if (data) {
-			console.log(data);
+
+    		// If there are more than 5 results, just return the top 5
+			if (data.length > 5) {
+				data = data.slice(0, 5);
+			}
+
 			res.send(JSON.stringify({message: null, users: data}));
 			
 		// if there are no matching users

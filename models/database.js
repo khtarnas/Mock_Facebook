@@ -417,11 +417,9 @@ myDB_acceptFriendRequest = function(current, accepting, callback) {
 var myDB_matchUserStem = function(stem, callback) {
 	
 	// set the number of users you're looking for
-	number_of_matches = 5;
 	
 	// params and scan
 	var params = {
-    	Limit: number_of_matches,
     	TableName: "users",
 		FilterExpression: 'contains(#usrnm, :stem)',
         ExpressionAttributeValues: {
@@ -436,7 +434,7 @@ var myDB_matchUserStem = function(stem, callback) {
     	if (err || data.Items.length == 0) {
       		callback(err, null);
     	} else {
-      		callback(err, data.Items[0]);
+      		callback(err, data.Items);
     	}
   	});
 }
